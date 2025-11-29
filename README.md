@@ -1,2 +1,9 @@
-# Basic-Server
-A basic Server-side using technology such as Flask, Django,...
+# Website
+
+# Techstack
+- Design: Figma
+- Frontend: React(Typescript)
+- Backend: Express.js
+- Database: MongoDB
+- Mobile: React-Native
+
