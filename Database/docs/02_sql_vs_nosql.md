@@ -1,8 +1,8 @@
-# SQL vs. NoSQL
+# SQL vs. NoSQL: The Core Choice
 
 When starting a project, one of the biggest architectural decisions is choosing between a Relational Database (SQL) and a Non-Relational Database (NoSQL).
 
-## Relational Databases (SQL)
+## 1. Relational Databases (SQL)
 **Examples**: PostgreSQL, MySQL, SQLite, Oracle, SQL Server
 
 ### Characteristics
@@ -13,13 +13,13 @@ When starting a project, one of the biggest architectural decisions is choosing 
 - **Vertical Scaling**: Generally scaled by upgrading the hardware of the database server (more RAM, CPU).
 
 ### When to use SQL:
-- You are dealing with complex queries and transactions (e.g., financial systems).
-- Data integrity is absolutely paramount.
-- Your data is highly structured and its structure rarely changes.
+- **Data Integrity**: You need strict schema validation and ACID transactions (e.g., Banking).
+- **Complex Relationships**: You have data that is highly relational and requires multiple JOINS.
+- **Stable Schema**: Your data structure doesn't change frequently.
 
 ---
 
-## Non-Relational Databases (NoSQL)
+## 2. Non-Relational Databases (NoSQL)
 **Examples**: MongoDB (Document), Redis (Key-Value), Cassandra (Wide-Column), Neo4j (Graph)
 
 ### Characteristics
@@ -29,13 +29,27 @@ When starting a project, one of the biggest architectural decisions is choosing 
 - **Horizontal Scaling**: Designed to be scaled across multiple commodity servers easily.
 
 ### When to use NoSQL:
-- You need to store massive volumes of data that might have different structures.
-- You need extreme read/write speeds and low latency.
-- Your application uses agile methodologies and requires rapid schema changes.
-- You are working with specific data paradigms (e.g., caching, social graphs, time-series data).
+- **High Velocity**: You need to write massive amounts of data per second (e.g., IoT metrics).
+- **Unstructured Data**: You don't know the schema yet or it changes often (e.g., User profiles, Catalogs).
+- **Scalability**: You need to scale horizontally across many servers easily.
+- **Specific Paradigms**: Caching, social graphs, or time-series data.
 
-## Hybrid Approach
-Modern applications rarely use just one database. A common architecture (Polyglot Persistence) might use:
+---
+
+## 3. Comparison Table
+
+| Feature | SQL | NoSQL |
+| :--- | :--- | :--- |
+| **Model** | Tables / Rows | Documents / Key-Value / Graphs |
+| **Schema** | Predefined (Rigid) | Dynamic (Flexible) |
+| **Scaling** | Vertical (Mostly) | Horizontal (Native) |
+| **Transactions** | ACID (Strict) | BASE (Eventual) |
+| **Joins** | Core feature | ⚠️ Usually done in code |
+
+---
+
+## 4. Hybrid Approach (Polyglot Persistence)
+Modern applications rarely use just one database. A common architecture might use:
 - **PostgreSQL** as the primary data store for user accounts and billing (SQL).
 - **MongoDB** to store flexible product catalogs or user-generated content (NoSQL).
 - **Redis** to cache frequent queries and manage user sessions (Key-Value).
