@@ -35,14 +35,39 @@
     - Sinatra
 
 - Database
-    - MongoDB
-    - MySQL
-    - PostgreSQL
-    - Redis
-    - Cassandra
-    - SQLite
-    - Elasticsearch
-    - Neo4j
+    - Relational
+        - PostgreSQL
+        - MySQL
+        - SQLite
+    - NoSQL
+        - MongoDB
+        - Redis
+        - Cassandra
+        - Elasticsearch
+        - Neo4j
+    - ORM & Query Builders
+        - Prisma
+        - Sequelize
+        - TypeORM
+        - Drizzle
+        - Mongoose
+        - Knex
+        - SQLAlchemy (Python)
+        - Hibernate (Java)
+        - GORM (Go)
+    - Management Tools
+        - pgAdmin
+        - DBeaver
+        - Redis Insight
+        - MongoDB Compass
+        - MySQL Workbench
+        - TablePlus
+        - DataGrip
+    - Cloud & BaaS
+        - Supabase
+        - Firebase
+        - PlanetScale
+        - MongoDB Atlas
 
 - Message Brokers
     - Kafka
