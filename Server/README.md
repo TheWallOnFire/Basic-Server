@@ -15,3 +15,9 @@ This folder contains backend implementations and message broker configurations a
 ## 📨 Messaging & Real-time
 - **[Message Brokers](./Message%20Brokers/)**: Kafka and RabbitMQ configurations.
 - **[Socket.IO](./Node.js/Real-time/)**: Real-time WebSocket communication examples.
+
+## 📜 Documentation & Guides
+- **[API Design Patterns](./docs/1_api_design.md)**
+- **[Backend Security Best Practices](./docs/2_security_best_practices.md)**
+- **[Node.js Ecosystem Deep Dive](./Node.js/docs/1_best_practices.md)**
+
