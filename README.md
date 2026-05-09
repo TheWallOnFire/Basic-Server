@@ -2,10 +2,43 @@
 
 ## sub project
 - Node.js
-    - Express
-    - Fastify
-    - Koa
-    - Hapi
+    - Web Frameworks
+        - Express
+        - Fastify
+        - Koa
+        - Hapi
+        - NestJS
+    - Testing
+        - Jest
+        - Vitest
+        - Supertest
+    - Validation & Schema
+        - Zod
+        - Joi
+    - Authentication
+        - Passport.js
+        - JWT
+        - bcrypt
+    - API Tools
+        - Swagger / OpenAPI
+        - tRPC
+        - GraphQL (Apollo)
+    - Logging & Process
+        - Winston
+        - Pino
+        - PM2
+    - Real-time
+        - Socket.IO
+    - Utilities & Middleware
+        - Multer
+        - CORS
+        - Helmet
+        - Nodemailer
+        - Axios
+        - dotenv
+    - Task Queues
+        - BullMQ
+        - node-cron
 - Python
     - Flask
     - FastAPI
@@ -45,6 +78,8 @@
         - Cassandra
         - Elasticsearch
         - Neo4j
+        - InfluxDB
+        - ClickHouse
     - ORM & Query Builders
         - Prisma
         - Sequelize
@@ -68,6 +103,9 @@
         - Firebase
         - PlanetScale
         - MongoDB Atlas
+    - Database Utilities
+        - PostGIS
+        - pgBouncer
 
 - Message Brokers
     - Kafka

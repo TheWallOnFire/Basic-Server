@@ -159,15 +159,14 @@ Neo4j is an ACID-compliant transactional database with native graph storage and 
 
 ## Database Engines — Summary Cheat Sheet
 
-| Feature | PostgreSQL | MySQL | MongoDB | Redis | Cassandra | SQLite | Elasticsearch | Neo4j |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Data Model** | Relational | Relational | Document | Key-Value | Wide-Column | Relational | Search / Document | Graph |
-| **Primary Use** | Complex Data | Web Apps | Rapid Dev | Caching | Massive Scale | Local/Mobile Apps | Search/Analytics | Connected Data |
-| **Scalability** | Vertical | Vertical | Horizontal | Clustering | Linear | None | Horizontal | Horizontal/Vertical |
-| **ACID Strictness** | Very High | High | Document-level | Command-level | Tunable | High | Eventual | High |
-| **Query Flexibility** | Excellent | Very Good | Good | Poor | Poor | Good | Excellent (Text) | Excellent (Graph) |
-| **License** | Open Source | Open Source | SSPL | Open Source | Open Source | Public Domain | SSPL | GPL / Commercial |
-| **Written In** | C | C/C++ | C++ | C | Java | C | Java | Java/Scala |
+| Feature | PostgreSQL | MySQL | MongoDB | Redis | Cassandra | SQLite | Elasticsearch | ClickHouse | InfluxDB | Neo4j |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Data Model** | Relational | Relational | Document | Key-Value | Wide-Column | Relational | Search | Column-Store | Time-Series | Graph |
+| **Primary Use** | Complex Data | Web Apps | Rapid Dev | Caching | Massive Scale | Local Apps | Search/Logs | Analytics | Metrics/IoT | Connect Data |
+| **Scalability** | Vertical | Vertical | Horizontal | Cluster | Linear | None | Horizontal | Horizontal | Horizontal | Horizontal |
+| **Query Lang** | SQL | SQL | MQL | Commands | CQL | SQL | DSL | SQL | Flux / InfluxQL | Cypher |
+| **ACID** | High | High | Doc-level | Command | Tunable | High | Eventual | Eventual | Eventual | High |
+| **Written In** | C | C/C++ | C++ | C | Java | C | Java | C++ | Go | Java |
 
 ---
 
