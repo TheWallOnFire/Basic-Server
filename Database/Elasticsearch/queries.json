@@ -1,0 +1,50 @@
+// Elasticsearch Query Examples (JSON payloads for REST API)
+// These would typically be sent via POST or GET to the Elasticsearch endpoints
+
+// 1. Indexing a Document (POST /movies/_doc/1)
+{
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "year": 2010,
+  "genres": ["Action", "Sci-Fi"]
+}
+
+// 2. Simple Match Query (GET /movies/_search)
+{
+  "query": {
+    "match": {
+      "title": "Inception"
+    }
+  }
+}
+
+// 3. Boolean Query (Complex Searching) (GET /movies/_search)
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "director": "Nolan" } }
+      ],
+      "filter": [
+        { "range": { "year": { "gte": 2000 } } }
+      ]
+    }
+  }
+}
+
+// 4. Aggregations (Analytics) (GET /movies/_search)
+{
+  "size": 0,
+  "aggs": {
+    "genres_count": {
+      "terms": { "field": "genres.keyword" }
+    }
+  }
+}
+
+// 5. Updating a Document (POST /movies/_update/1)
+{
+  "doc": {
+    "year": 2011
+  }
+}

@@ -40,6 +40,9 @@
     - PostgreSQL
     - Redis
     - Cassandra
+    - SQLite
+    - Elasticsearch
+    - Neo4j
 
 - Message Brokers
     - Kafka
