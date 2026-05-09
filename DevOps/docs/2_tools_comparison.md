@@ -1,94 +1,72 @@
-# CI/CD Tools Comparison Guide
+# DevOps Strategy — Tooling & Stack Selection
 
-Choosing the right CI/CD tool depends on your team size, infrastructure, budget, and existing ecosystem.
-
----
-
-## Side-by-Side Comparison
-
-| Feature | Jenkins | GitHub Actions | GitLab CI | Docker (Build) | Kubernetes (Orchestrate) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Type** | CI/CD Server | CI/CD Service | CI/CD Service | Container Platform | Container Orchestrator |
-| **Hosting** | Self-hosted | Cloud (GitHub) | Cloud or Self-hosted | Local / Cloud | Cloud / Self-hosted |
-| **Config File** | `Jenkinsfile` | `.github/workflows/*.yml` | `.gitlab-ci.yml` | `Dockerfile` | `*.yml` manifests |
-| **Language** | Groovy | YAML | YAML | Dockerfile syntax | YAML |
-| **Cost** | Free (infra cost) | Free tier + paid | Free tier + paid | Free | Free (infra cost) |
-| **Learning Curve** | Medium-High | Low | Low-Medium | Low | High |
-| **Plugin Ecosystem** | Massive (1800+) | Growing Marketplace | Built-in features | Docker Hub | Helm Charts |
-| **Best For** | Enterprise, complex pipelines | GitHub-hosted projects | GitLab-hosted projects | Packaging apps | Running apps at scale |
+Choosing the right DevOps stack depends on your organization's maturity, cloud strategy, and developer experience (DX) goals.
 
 ---
 
-## When to Use What
+## 1. Choosing Your Infrastructure Strategy
 
-### Jenkins
-✅ **Choose Jenkins when:**
-- You need maximum customization and control
-- Your org has complex, enterprise-grade pipelines
-- You need to integrate with legacy or on-premise tools
-- You want to self-host everything
+### Strategy A: The "Cloud Native" Stack (GCP/AWS/Azure)
+Best for startups and modern tech companies who want high speed and low maintenance.
+- **CI/CD**: GitHub Actions or GitLab CI.
+- **Compute**: Kubernetes (GKE/EKS) or Serverless (Cloud Run/Lambda).
+- **IaC**: Pulumi or Terraform.
+- **Observability**: Datadog or OpenTelemetry + Honeycomb.
 
-❌ **Avoid when:** You want zero infrastructure management
+### Strategy B: The "GitOps" Stack (Advanced)
+Best for teams running high-scale Kubernetes who want absolute state consistency.
+- **CI**: GitHub Actions.
+- **CD**: ArgoCD or FluxCD.
+- **Orchestration**: Kubernetes with Helm/Kustomize.
+- **Security**: Policy as Code (Kyverno) + Harbor Registry.
 
-### GitHub Actions
-✅ **Choose GitHub Actions when:**
-- Your code is already on GitHub
-- You want the fastest time-to-CI (zero setup)
-- You need matrix testing across OS/versions
-- Your team is small to medium
-
-❌ **Avoid when:** You need advanced deployment environment management or have a GitLab-based workflow
-
-### GitLab CI
-✅ **Choose GitLab CI when:**
-- Your code is on GitLab (or you want an all-in-one DevOps platform)
-- You need built-in container registry, package registry, and review apps
-- You want Auto DevOps to auto-detect and deploy projects
-
-❌ **Avoid when:** Your team is deeply integrated into the GitHub ecosystem
-
-### Docker
-✅ **Always use Docker for:**
-- Packaging applications into consistent, portable containers
-- Local development environments (`docker-compose`)
-- Building reproducible images for CI/CD pipelines
-
-### Kubernetes
-✅ **Choose Kubernetes when:**
-- You need to run multiple services at scale
-- You need auto-scaling, self-healing, and rolling deployments
-- You're running in a cloud environment (AWS EKS, GCP GKE, Azure AKS)
-
-❌ **Avoid when:** You have a simple app with 1-3 services (use Docker Compose instead)
+### Strategy C: The "Enterprise/Self-Hosted" Stack
+Best for banks, government, or companies with strict data residency requirements.
+- **CI/CD**: Jenkins or GitLab Self-Managed.
+- **Compute**: Private Cloud (OpenStack) or Bare Metal with Nomad/K8s.
+- **Artifacts**: JFrog Artifactory or Harbor.
+- **IaC**: Terraform + Ansible for configuration.
 
 ---
 
-## Typical Production Stack
+## 2. Decision Matrix: Orchestration
 
+| Feature | Kubernetes | HashiCorp Nomad | Docker Compose |
+| :--- | :--- | :--- | :--- |
+| **Complexity** | High | Medium | Very Low |
+| **Effort to Manage** | High | Low-Medium | Very Low |
+| **Workloads** | Containers Only | Anything (Binaries, VMs) | Containers Only |
+| **Market Share** | ~80% (Standard) | ~10% (Growing) | Local Dev Standard |
+| **Best For** | Massive scale, ecosystem | Simple clusters, non-Docker | Single server, local dev |
+
+---
+
+## 3. Decision Matrix: Infrastructure as Code
+
+| Feature | Terraform | Pulumi | Ansible |
+| :--- | :--- | :--- | :--- |
+| **Primary Goal** | Provisioning | Provisioning | Configuration |
+| **Language** | HCL (Static) | TS/Py/Go (General) | YAML (Static) |
+| **Best For** | Platform teams | Full-stack developers | Sysadmins / Server config |
+
+---
+
+## 4. The "Gold Standard" Production Workflow (2024+)
+
+```mermaid
+graph LR
+    A[Code] --> B[CI: GHA/GitLab]
+    B --> C{Scan: Trivy}
+    C -->|Pass| D[Registry: Harbor]
+    D --> E[GitOps: ArgoCD]
+    E --> F[Cluster: K8s/Nomad]
+    F --> G[Observe: OTel/Grafana]
+    G -->|Feedback| A
 ```
-Developer pushes code
-        │
-        ▼
-┌─────────────────────┐
-│  GitHub / GitLab     │  ← Source Control
-│  (Triggers CI)       │
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  GitHub Actions /    │  ← CI: Lint, Test, Build
-│  GitLab CI / Jenkins │
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  Docker              │  ← Package: Build image, push to registry
-│  (Build & Push)      │
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  Kubernetes          │  ← CD: Pull image, deploy, scale, monitor
-│  (Orchestrate)       │
-└─────────────────────┘
-```
+
+1. **Commit**: Code is pushed to Git.
+2. **Verify**: CI runs tests and security scans (SonarQube/Trivy).
+3. **Package**: Build Docker image and push to a private registry (Harbor).
+4. **Synchronize**: GitOps controller (ArgoCD) detects change in Git and updates the cluster.
+5. **Observability**: Metrics and traces are sent to Grafana via OpenTelemetry.
+6. **Cost Control**: Infracost monitors cloud spend on every PR.

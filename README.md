@@ -114,11 +114,18 @@
 - DevOps
     - OS & Terminal
         - Linux & Bash
+        - Vim & Neovim
+        - Tmux
+        - Zsh & Oh My Zsh
+        - systemd (Service Management)
+        - sed & awk (Text Processing)
+        - Advanced SSH (Tunneling & Config)
     - Networking & Security
         - SSH / SSL / DNS
         - Caddy
         - Nginx
         - Traefik
+        - Cilium (eBPF)
     - CI/CD Platforms
         - Jenkins
         - GitHub Actions
@@ -131,24 +138,38 @@
         - Kubernetes
         - Nomad
         - Helm
+        - Kustomize
         - Istio (Service Mesh)
+        - Linkerd (Service Mesh)
     - Infrastructure Provisioning
         - Terraform
         - Pulumi
         - Ansible
         - Vault
         - AWS CLI
+        - AWS CDK
         - CloudFormation
+        - Infracost (Cost Management)
+    - Database DevOps
+        - Liquibase
+        - Flyway
     - Observability
         - Prometheus
         - Grafana
+        - Loki (Logging)
         - ELK Stack
         - OpenTelemetry
+        - Jaeger (Tracing)
         - Datadog
         - Sentry
+        - Incident Response (PagerDuty)
     - Code Quality & Security
         - SonarQube
         - Trivy
+        - k6 (Load Testing)
+        - Falco (Runtime Security)
+        - Policy as Code (OPA/Kyverno)
     - Artifact Management
         - JFrog Artifactory
+        - Harbor
         - Sonatype Nexus (Comparison)

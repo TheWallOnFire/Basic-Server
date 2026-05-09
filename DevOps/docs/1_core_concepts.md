@@ -1,43 +1,65 @@
-# CI/CD & Orchestration Core Concepts
+# DevOps Fundamentals — Core Concepts
 
-## 1. What is CI/CD?
-- **Continuous Integration (CI)**: Developers frequently merge code changes into a shared repository, where automated builds and tests verify every change.
-- **Continuous Delivery (CD)**: Code changes are automatically prepared for release to production after passing CI.
-- **Continuous Deployment**: An extension of CD where every change that passes CI is automatically deployed to production with no human intervention.
+This document covers the high-level philosophy and essential concepts of DevOps.
 
-## 2. The CI/CD Pipeline
-A typical pipeline consists of these stages:
-```
-Code Commit → Build → Unit Tests → Integration Tests → Deploy to Staging → Deploy to Production
-```
+---
 
-## 3. Containers vs. Virtual Machines
+## 1. What is DevOps?
+DevOps is not just a role; it's a **culture**, a movement, and a set of practices that combines **Software Development (Dev)** and **IT Operations (Ops)**. The goal is to shorten the systems development life cycle and provide continuous delivery with high software quality.
+
+### The CAMS Framework
+- **Culture**: People and process over tools.
+- **Automation**: Automate everything that can be automated (CI/CD, IaC).
+- **Measurement**: Data-driven decisions (Monitoring, Observability).
+- **Sharing**: Collaborative feedback loops.
+
+---
+
+## 2. The DevOps Lifecycle (The Infinity Loop)
+DevOps is an iterative process:
+1. **Plan**: Task tracking, backlog management.
+2. **Code**: Version control (Git).
+3. **Build**: Continuous Integration (Docker, Maven, npm).
+4. **Test**: Automated testing (Jest, Selenium, SonarQube).
+5. **Release**: Artifact management (Harbor, Artifactory).
+6. **Deploy**: Continuous Delivery (ArgoCD, Terraform).
+7. **Operate**: Infrastructure management (K8s, Ansible).
+8. **Monitor**: Observability (Prometheus, Grafana, ELK).
+
+---
+
+## 3. Shift-Left Security (DevSecOps)
+The practice of moving security testing to the **earliest stages** of the development process. Instead of waiting until a release is ready, we scan for vulnerabilities during the coding and building phases using tools like **Trivy** and **Snyk**.
+
+---
+
+## 4. Site Reliability Engineering (SRE)
+SRE is what happens when you ask a software engineer to design an operations function.
+- **SLI (Service Level Indicator)**: A specific metric (e.g., Error Rate).
+- **SLO (Service Level Objective)**: The target for that metric (e.g., < 0.1% error rate).
+- **Error Budget**: The amount of downtime or error rate allowed (100% - SLO).
+
+---
+
+## 5. Infrastructure as Code (IaC) vs. Configuration Management
+- **IaC (Terraform, Pulumi)**: Provisions the "hardware" or cloud resources (Virtual Machines, Databases, Networks).
+- **Config Management (Ansible, Chef)**: Configures the "software" inside those resources (installing Node.js, setting up Nginx).
+
+---
+
+## 6. Containers vs. Virtual Machines
 
 | Feature | Containers (Docker) | Virtual Machines |
 | :--- | :--- | :--- |
-| **Isolation** | Process-level | Hardware-level |
-| **Size** | Megabytes | Gigabytes |
-| **Startup Time** | Seconds | Minutes |
-| **Overhead** | Minimal (shares host kernel) | Heavy (runs full OS) |
-| **Use Case** | Microservices, CI/CD | Legacy apps, full OS isolation |
+| **Isolation** | Process-level (Namespace/Cgroups) | Hardware-level (Hypervisor) |
+| **Size** | Megabytes (Shared Kernel) | Gigabytes (Full OS) |
+| **Startup** | Seconds | Minutes |
+| **Efficiency** | Very High | Medium |
 
-## 4. Orchestration (Kubernetes)
-When you have hundreds of containers, you need orchestration to manage them:
-- **Scheduling**: Deciding which node runs which container.
-- **Scaling**: Automatically increasing or decreasing the number of containers based on load.
-- **Self-healing**: Restarting failed containers automatically.
-- **Service Discovery**: Allowing containers to find and communicate with each other.
+---
 
-## 5. Infrastructure as Code (IaC)
-Define your infrastructure in code files instead of manually configuring servers:
-- **Terraform**: Cloud-agnostic IaC tool.
-- **Docker Compose**: Define multi-container applications.
-- **Kubernetes YAML**: Declare desired cluster state.
-
-## 6. Key Terms Glossary
-- **Image**: A read-only template for creating containers (e.g., a Docker image).
-- **Container**: A running instance of an image.
-- **Pod**: The smallest deployable unit in Kubernetes (one or more containers).
-- **Service**: An abstraction in Kubernetes that defines a logical set of Pods and a policy to access them.
-- **Ingress**: Manages external access (HTTP/HTTPS) to services in a Kubernetes cluster.
-- **Helm**: A package manager for Kubernetes (like npm for K8s configurations).
+## 7. Key Terms Glossary
+- **GitOps**: Using Git as the single source of truth for infrastructure and application state.
+- **Service Mesh**: A dedicated infrastructure layer for handling service-to-service communication.
+- **Observability**: The ability to measure the internal state of a system by looking at its outputs (Logs, Metrics, Traces).
+- **Immutable Infrastructure**: Instead of updating a server, you replace it with a new one from a new image.
