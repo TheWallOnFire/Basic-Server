@@ -157,7 +157,7 @@ Neo4j is an ACID-compliant transactional database with native graph storage and 
 
 ---
 
-## Summary Cheat Sheet
+## Database Engines — Summary Cheat Sheet
 
 | Feature | PostgreSQL | MySQL | MongoDB | Redis | Cassandra | SQLite | Elasticsearch | Neo4j |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -166,3 +166,101 @@ Neo4j is an ACID-compliant transactional database with native graph storage and 
 | **Scalability** | Vertical | Vertical | Horizontal | Clustering | Linear | None | Horizontal | Horizontal/Vertical |
 | **ACID Strictness** | Very High | High | Document-level | Command-level | Tunable | High | Eventual | High |
 | **Query Flexibility** | Excellent | Very Good | Good | Poor | Poor | Good | Excellent (Text) | Excellent (Graph) |
+| **License** | Open Source | Open Source | SSPL | Open Source | Open Source | Public Domain | SSPL | GPL / Commercial |
+| **Written In** | C | C/C++ | C++ | C | Java | C | Java | Java/Scala |
+
+---
+
+# ORM & Query Builder Comparison
+
+## Node.js / TypeScript ORMs
+
+| Feature | Prisma | Sequelize | TypeORM | Drizzle | Mongoose | Knex |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Type** | ORM | ORM | ORM | ORM | ODM | Query Builder |
+| **Language** | TypeScript | JavaScript/TS | TypeScript | TypeScript | JavaScript/TS | JavaScript/TS |
+| **Schema Definition** | `.prisma` file | JS Classes | TS Decorators | TS Functions | JS Schema | Migrations only |
+| **Type Safety** | ✅ Full (generated) | ⚠️ Partial | ✅ Good | ✅ Full (native) | ⚠️ Partial | ❌ Manual |
+| **Code Generation** | Yes (required) | No | No | No | No | No |
+| **Migration System** | Built-in (Prisma Migrate) | CLI (`sequelize-cli`) | Built-in (sync/migration) | Built-in (Drizzle Kit) | No (schema-less) | Built-in |
+| **Raw SQL Escape** | Yes (`$queryRaw`) | Yes (`sequelize.query`) | Yes (`query`) | Yes (`sql`) | No (MongoDB) | Yes (`knex.raw`) |
+| **Target Database** | SQL + MongoDB | SQL only | SQL only | SQL only | MongoDB only | SQL only |
+| **Learning Curve** | Low | Medium | Medium | Low | Low | Low |
+| **Maturity** | 2019+ | 2014+ | 2016+ | 2022+ | 2010+ | 2013+ |
+| **GitHub Stars** | ~41k | ~29k | ~34k | ~28k | ~27k | ~19k |
+| **Best For** | Type-safe APIs | Legacy projects | NestJS / enterprise | Performance-first | MongoDB apps | Flexible SQL |
+
+### When to Pick Which (Node.js)
+- **Prisma**: You want the best developer experience with full type safety and don't mind code generation.
+- **Drizzle**: You want type safety without code generation and prefer an API that mirrors SQL.
+- **Sequelize**: You're working on an existing project that already uses it, or you need a battle-tested, mature ORM.
+- **TypeORM**: You're building a NestJS application or prefer the Active Record / Data Mapper pattern with decorators.
+- **Mongoose**: Your database is MongoDB. Period.
+- **Knex**: You want maximum control over your SQL and don't need a full ORM abstraction layer.
+
+---
+
+## Cross-Language ORM Comparison
+
+| Feature | Prisma (Node) | SQLAlchemy (Python) | Hibernate (Java) | GORM (Go) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Language** | TypeScript/JS | Python | Java | Go |
+| **Pattern** | Schema-first | Code-first (Core + ORM) | Annotations / XML | Struct Tags |
+| **Type Safety** | ✅ Generated client | ⚠️ Runtime | ✅ Generics + Annotations | ✅ Struct-based |
+| **Migration** | Prisma Migrate | Alembic (separate) | Hibernate hbm2ddl | AutoMigrate |
+| **Async Support** | ✅ Native | ✅ asyncio | ⚠️ Reactive extensions | ✅ Goroutines |
+| **Connection Pool** | Built-in | Built-in | Built-in (C3P0/HikariCP) | Built-in |
+| **Caching** | ❌ No | ❌ Manual | ✅ L1 + L2 cache | ❌ No |
+| **Maturity** | Modern (2019+) | Very Mature (2006+) | Very Mature (2001+) | Mature (2013+) |
+| **Ecosystem Size** | Large (Node) | Massive (Python) | Massive (Java) | Large (Go) |
+| **Best For** | Modern TS APIs | Flask/FastAPI apps | Spring Boot / Enterprise | Go microservices |
+
+---
+
+# Management Tools Comparison
+
+| Feature | pgAdmin | DBeaver | MySQL Workbench | TablePlus | DataGrip | Redis Insight | MongoDB Compass |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Price** | Free | Free (CE) | Free | Freemium | Paid ($25/mo) | Free | Free |
+| **Platform** | Web / Desktop | Desktop | Desktop | Desktop / iOS | Desktop | Web / Desktop | Desktop |
+| **Multi-DB Support** | PostgreSQL only | 100+ databases | MySQL only | 20+ databases | 30+ databases | Redis only | MongoDB only |
+| **ER Diagrams** | ✅ | ✅ | ✅ (best) | ❌ | ✅ | N/A | ❌ |
+| **SQL Autocomplete** | Good | Good | Good | Good | Excellent | N/A | N/A |
+| **Data Editing** | ✅ | ✅ | ✅ | ✅ Inline | ✅ Inline | ✅ | ✅ Inline |
+| **SSH Tunnel** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Dark Mode** | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+| **Performance** | Web-based (slower) | Java (moderate) | Java (moderate) | Native (fastest) | Java (good) | Web (good) | Electron (moderate) |
+| **Best For** | PostgreSQL admin | Multi-DB teams | MySQL design | Daily development | Power users | Redis debugging | MongoDB exploration |
+
+### When to Pick Which (Management Tool)
+- **You only use PostgreSQL** → pgAdmin (free, official, full-featured)
+- **You only use MySQL** → MySQL Workbench (free, official, best ER diagrams)
+- **You only use MongoDB** → MongoDB Compass (free, official, aggregation builder)
+- **You only use Redis** → Redis Insight (free, official, memory analysis)
+- **You use multiple databases** → DBeaver (free) or TablePlus (fast, beautiful)
+- **You want the absolute best SQL experience** → DataGrip (paid, JetBrains quality)
+
+---
+
+# Cloud & BaaS Comparison
+
+| Feature | Supabase | Firebase | PlanetScale | MongoDB Atlas |
+| :--- | :--- | :--- | :--- | :--- |
+| **Underlying DB** | PostgreSQL | Firestore (NoSQL) | MySQL (Vitess) | MongoDB |
+| **Data Model** | Relational / SQL | Document / NoSQL | Relational / SQL | Document / NoSQL |
+| **Open Source** | ✅ Yes | ❌ No | ❌ No | ❌ No (driver is) |
+| **Self-Hostable** | ✅ Yes | ❌ No | ❌ No | ❌ No |
+| **Free Tier** | ✅ 500MB, 2 projects | ✅ Generous | ✅ 1 DB, 5GB | ✅ M0 Sandbox, 512MB |
+| **Real-time** | ✅ Built-in | ✅ Built-in | ❌ No | ✅ Change Streams |
+| **Auth** | ✅ Built-in | ✅ Built-in | ❌ No | ❌ No (Atlas App Services) |
+| **Auto API** | ✅ REST + GraphQL | ✅ SDK-based | ❌ No | ✅ Data API |
+| **Branching** | ❌ (coming soon) | ❌ No | ✅ Git-like branches | ❌ No |
+| **Edge Functions** | ✅ Deno | ✅ Cloud Functions | ❌ No | ✅ App Services |
+| **Best For** | Full-stack web apps with SQL | Mobile-first apps | MySQL at scale | MongoDB at scale |
+
+### When to Pick Which (Cloud / BaaS)
+- **You want PostgreSQL + full backend (auth, real-time, storage)** → Supabase
+- **You're building a mobile app (iOS/Android/Flutter)** → Firebase
+- **You want serverless MySQL with zero-downtime migrations** → PlanetScale
+- **You already use MongoDB and want managed infrastructure** → MongoDB Atlas
+

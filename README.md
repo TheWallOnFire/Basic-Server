@@ -74,8 +74,27 @@
     - RabbitMQ
 
 - CI/CD & Orchestration
-    - Docker
-    - Kubernetes
-    - Jenkins
-    - GitHub Actions
-    - GitLab CI
+    - CI/CD Platforms
+        - Jenkins
+        - GitHub Actions
+        - GitLab CI
+        - CircleCI
+        - ArgoCD
+    - Containerization
+        - Docker
+    - Orchestration
+        - Kubernetes
+        - Helm
+    - Infrastructure as Code
+        - Terraform
+        - Ansible
+        - Vault
+        - Nginx
+    - Monitoring & Logging
+        - Prometheus
+        - Grafana
+        - ELK Stack
+        - Sentry
+    - Code Quality & Security
+        - SonarQube
+        - Trivy
