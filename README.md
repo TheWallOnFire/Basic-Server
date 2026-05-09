@@ -111,28 +111,44 @@
     - Kafka
     - RabbitMQ
 
-- CI/CD & Orchestration
+- DevOps
+    - OS & Terminal
+        - Linux & Bash
+    - Networking & Security
+        - SSH / SSL / DNS
+        - Caddy
+        - Nginx
+        - Traefik
     - CI/CD Platforms
         - Jenkins
         - GitHub Actions
         - GitLab CI
-        - CircleCI
         - ArgoCD
+        - FluxCD
     - Containerization
         - Docker
     - Orchestration
         - Kubernetes
+        - Nomad
         - Helm
-    - Infrastructure as Code
+        - Istio (Service Mesh)
+    - Infrastructure Provisioning
         - Terraform
+        - Pulumi
         - Ansible
         - Vault
-        - Nginx
-    - Monitoring & Logging
+        - AWS CLI
+        - CloudFormation
+    - Observability
         - Prometheus
         - Grafana
         - ELK Stack
+        - OpenTelemetry
+        - Datadog
         - Sentry
     - Code Quality & Security
         - SonarQube
         - Trivy
+    - Artifact Management
+        - JFrog Artifactory
+        - Sonatype Nexus (Comparison)
