@@ -1,0 +1,90 @@
+# Full Stack Example with Docker Compose
+# This demonstrates a complete multi-service application:
+# - Node.js API server
+# - PostgreSQL database
+# - Redis cache
+# - Nginx reverse proxy
+
+version: '3.8'
+
+services:
+  # ─── Reverse Proxy ───────────────────────────────
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
+    networks:
+      - frontend
+
+  # ─── API Server ──────────────────────────────────
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=admin
+      - DB_PASSWORD=secret
+      - DB_NAME=myapp
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+  # ─── PostgreSQL Database ─────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=myapp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Auto-run SQL on first start
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d myapp"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
+    restart: unless-stopped
+
+  # ─── Redis Cache ─────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    command: redis-server --maxmemory 128mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    networks:
+      - backend
+    restart: unless-stopped
+
+# ─── Named Volumes ───────────────────────────────
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+# ─── Networks ────────────────────────────────────
+# Frontend: nginx <-> api
+# Backend:  api <-> postgres, redis
+# postgres and redis are NOT accessible from nginx
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
