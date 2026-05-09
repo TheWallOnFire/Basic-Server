@@ -21,6 +21,14 @@ Storage solutions, engine configurations, and ORM guides.
 - **Cloud & BaaS**: Supabase, Firebase, PlanetScale.
 - **[Database Comparison](./Database/docs/3_comparison.md)**.
 
+### [🧠 System Design](./System%20Design/)
+High-level principles and patterns for building scalable and reliable distributed systems.
+- **Scalability**: Horizontal vs Vertical scaling.
+- **Reliability**: SLAs, SLOs, and High Availability.
+- **Protocols**: HTTP, WebSockets, gRPC, WebRTC.
+- **Caching & Load Balancing**: CDNs, L4/L7, Algorithms.
+- **Patterns**: CQRS, Event Sourcing, Microservices.
+
 ### [♾️ DevOps](./DevOps/)
 The complete [roadmap.sh/devops](https://roadmap.sh/devops) path for infrastructure and automation.
 - **[Master Strategy Guide](./DevOps/docs/4_master_strategy.md)**: Professional workflows.
