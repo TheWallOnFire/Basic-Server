@@ -1,0 +1,35 @@
+# GitHub Actions — Reusable Workflows & Common Patterns
+# Place this file at: .github/workflows/release.yml
+
+name: Release & Tag
+
+on:
+  workflow_dispatch:           # Manual trigger from GitHub UI
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.2.3)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${{ inputs.version }}" -m "Release v${{ inputs.version }}"
+          git push origin "v${{ inputs.version }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ inputs.version }}"
+          generate_release_notes: true

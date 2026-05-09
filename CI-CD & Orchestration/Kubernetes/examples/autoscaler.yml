@@ -1,0 +1,28 @@
+# Kubernetes — Horizontal Pod Autoscaler
+# Automatically scales pods based on CPU/memory usage.
+# Apply with: kubectl apply -f autoscaler.yml
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-app
+  minReplicas: 2               # Never go below 2 pods
+  maxReplicas: 10              # Never exceed 10 pods
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70   # Scale up when avg CPU > 70%
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80   # Scale up when avg Memory > 80%

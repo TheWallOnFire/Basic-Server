@@ -1,0 +1,106 @@
+// Jenkinsfile — Declarative Pipeline for a Node.js Application
+// Place this file at the root of your repository.
+
+pipeline {
+    agent any
+
+    environment {
+        NODE_ENV = 'test'
+        DOCKER_IMAGE = 'my-app'
+        DOCKER_TAG = "${env.BUILD_NUMBER}"
+    }
+
+    tools {
+        nodejs 'NodeJS-20'  // Must be configured in Jenkins > Global Tool Configuration
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                sh 'npm test -- --coverage'
+            }
+            post {
+                always {
+                    // Publish test results
+                    junit 'test-results/**/*.xml'
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
+                }
+            }
+        }
+
+        stage('Push to Registry') {
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    docker.withRegistry('https://registry.example.com', 'docker-credentials-id') {
+                        docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
+                        docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push('latest')
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Staging') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh './scripts/deploy-staging.sh'
+            }
+        }
+
+        stage('Deploy to Production') {
+            when {
+                branch 'main'
+            }
+            input {
+                message "Deploy to production?"
+                ok "Yes, deploy!"
+            }
+            steps {
+                sh './scripts/deploy-production.sh'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+            // Uncomment to add Slack notification:
+            // slackSend channel: '#ci-alerts', message: "Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+        }
+        always {
+            cleanWs()  // Clean workspace after build
+        }
+    }
+}

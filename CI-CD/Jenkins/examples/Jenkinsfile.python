@@ -1,0 +1,75 @@
+// Jenkinsfile — Declarative Pipeline for a Python Application
+
+pipeline {
+    agent any
+
+    environment {
+        PYTHON_VERSION = '3.12'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Setup Python Environment') {
+            steps {
+                sh '''
+                    python${PYTHON_VERSION} -m venv venv
+                    . venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                sh '''
+                    . venv/bin/activate
+                    ruff check .
+                '''
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                sh '''
+                    . venv/bin/activate
+                    pytest tests/ --junitxml=test-results/results.xml --cov=app --cov-report=html
+                '''
+            }
+            post {
+                always {
+                    junit 'test-results/results.xml'
+                    publishHTML(target: [
+                        reportDir: 'htmlcov',
+                        reportFiles: 'index.html',
+                        reportName: 'Coverage Report'
+                    ])
+                }
+            }
+        }
+
+        stage('Build & Push Docker') {
+            when { branch 'main' }
+            steps {
+                script {
+                    def image = docker.build("my-python-app:${env.BUILD_NUMBER}")
+                    docker.withRegistry('https://registry.example.com', 'docker-creds') {
+                        image.push()
+                        image.push('latest')
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

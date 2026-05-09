@@ -1,0 +1,93 @@
+# Kubernetes — Deployment Configuration for a Web Application
+# Apply with: kubectl apply -f deployment.yml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 3                    # Run 3 instances for high availability
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - name: web-app
+          image: my-app:1.0.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: password
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          livenessProbe:          # Restart container if unhealthy
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:         # Don't send traffic until ready
+            httpGet:
+              path: /ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+---
+# Service — Expose the deployment internally
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  ports:
+    - protocol: TCP
+      port: 80                   # Service port
+      targetPort: 3000           # Container port
+  type: ClusterIP                # Internal only (use Ingress for external)
+
+---
+# Ingress — Expose the service externally with HTTPS
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - app.example.com
+      secretName: app-tls-secret
+  rules:
+    - host: app.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-app-service
+                port:
+                  number: 80
