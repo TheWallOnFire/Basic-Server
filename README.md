@@ -26,14 +26,28 @@
     - Micronaut
 - C#
     - ASP.NET
-    - 
+    - Blazor
+- PHP
+    - Laravel
+    - Symfony
+- Ruby
+    - Ruby on Rails
+    - Sinatra
 
 - Database
     - MongoDB
     - MySQL
+    - PostgreSQL
     - Redis
+    - Cassandra
 
-- CI/CD
+- Message Brokers
+    - Kafka
+    - RabbitMQ
+
+- CI/CD & Orchestration
     - Docker
+    - Kubernetes
     - Jenkins
     - GitHub Actions
+    - GitLab CI
