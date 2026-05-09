@@ -112,6 +112,7 @@
     - RabbitMQ
 
 - DevOps
+    - [Master Strategy Guide](./DevOps/docs/4_master_strategy.md)
     - OS & Terminal
         - Linux & Bash
         - Vim & Neovim
@@ -122,6 +123,7 @@
         - Advanced SSH (Tunneling & Config)
     - Networking & Security
         - SSH / SSL / DNS
+        - Cloudflare (WAF/CDN)
         - Caddy
         - Nginx
         - Traefik
@@ -134,6 +136,7 @@
         - FluxCD
     - Containerization
         - Docker
+        - Buildpacks
     - Orchestration
         - Kubernetes
         - Nomad
@@ -143,6 +146,7 @@
         - Linkerd (Service Mesh)
     - Infrastructure Provisioning
         - Terraform
+        - Terragrunt
         - Pulumi
         - Ansible
         - Vault
@@ -153,6 +157,9 @@
     - Database DevOps
         - Liquibase
         - Flyway
+    - Task Queues & Automation
+        - Celery (Python)
+        - BullMQ (Node.js)
     - Observability
         - Prometheus
         - Grafana
@@ -165,6 +172,7 @@
         - Incident Response (PagerDuty)
     - Code Quality & Security
         - SonarQube
+        - Snyk (Vulnerability Scanning)
         - Trivy
         - k6 (Load Testing)
         - Falco (Runtime Security)
@@ -173,3 +181,9 @@
         - JFrog Artifactory
         - Harbor
         - Sonatype Nexus (Comparison)
+    - Cloud Providers
+        - Comparison & Strategy
+        - AWS (Deep Dive)
+        - GCP (Deep Dive)
+        - Azure (Deep Dive)
+        - Architecture Patterns
