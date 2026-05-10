@@ -1,6 +1,6 @@
 # 🗺️ AI Engineer Roadmap
 
-Welcome to the AI Engineer Roadmap! This guide is based on the [roadmap.sh/ai-engineer](https://roadmap.sh/ai-engineer) and is designed for developers who want to harness the power of LLMs and AI to build modern applications.
+Welcome to the AI Engineer Roadmap! This guide is based on the [roadmap.sh/ai-engineer](https://roadmap.sh/ai-engineer), [roadmap.sh/mlops](https://roadmap.sh/mlops), and [roadmap.sh/ai-data-scientist](https://roadmap.sh/ai-data-scientist) — designed for developers who want to harness the power of LLMs and AI to build modern applications.
 
 ---
 
@@ -24,6 +24,10 @@ Welcome to the AI Engineer Roadmap! This guide is based on the [roadmap.sh/ai-en
 ### 🔴 Phase 4: Production & Future
 10. **[Safety & Ethics](./10_safety_and_ethics.md)**: Security, bias, and responsible AI practices.
 11. **[Assisted Coding Tools](./11_assisted_coding_tools.md)**: Cursor, Copilot, and the future of "Vibe Coding".
+
+### 🟣 Phase 5: Operations & Data Science
+12. **[MLOps](./12_mlops.md)**: ML lifecycle, experiment tracking (MLflow/W&B), model serving, and drift detection.
+13. **[Data Science Foundations](./13_data_science_foundations.md)**: Math (linear algebra, stats), classical ML, deep learning, and evaluation metrics.
 
 ---
 
