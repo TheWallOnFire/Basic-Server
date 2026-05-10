@@ -4,7 +4,7 @@ Welcome to the AI Engineer Roadmap! This guide is based on the [roadmap.sh/ai-en
 
 ---
 
-## 🛤️ The Path
+## Tracks & Phases
 
 ### 🟢 Phase 1: Foundations
 1. **[AI Engineer Introduction](./01_introduction.md)**: What is an AI Engineer and how it differs from ML roles.
@@ -26,8 +26,22 @@ Welcome to the AI Engineer Roadmap! This guide is based on the [roadmap.sh/ai-en
 11. **[Assisted Coding Tools](./11_assisted_coding_tools.md)**: Cursor, Copilot, and the future of "Vibe Coding".
 
 ### 🟣 Phase 5: Operations & Data Science
-12. **[MLOps](./12_mlops.md)**: ML lifecycle, experiment tracking (MLflow/W&B), model serving, and drift detection.
-13. **[Data Science Foundations](./13_data_science_foundations.md)**: Math (linear algebra, stats), classical ML, deep learning, and evaluation metrics.
+12. **[MLOps](./12_mlops.md)**: ML lifecycle, experiment tracking, model serving, and drift detection.
+13. **[Data Science Foundations](./13_data_science_foundations.md)**: Math foundations, classical ML, and evaluation metrics.
+
+### 💎 Phase 6: Advanced Production Techniques
+14. **[Fine-tuning & Quantization](./14_fine_tuning_quantization.md)**: Adapt models with LoRA/QLoRA and run them locally with GGUF.
+15. **[Advanced RAG Techniques](./15_advanced_rag.md)**: Query transformations, re-ranking, and self-correction.
+16. **[Evaluation & Observability](./16_evaluation_observability.md)**: Measuring performance with RAGAS and tracing with LangSmith.
+17. **[AI System Design](./17_ai_system_design.md)**: Architecting for cost, latency, and reliability.
+
+---
+
+## 🚀 Hands-on Projects
+The best way to learn is by building. Explore these starter subprojects:
+- **[📚 RAG PDF-QA](../projects/rag-pdf-qa/README.md)**: Build a chatbot that answers questions from your PDFs.
+- **[🕵️ Agentic Researcher](../projects/agentic-researcher/README.md)**: Create an autonomous agent that does web research for you.
+- **[👁️ Vision Analyzer](../projects/vision-analyzer/README.md)**: Build an app that understands and describes images.
 
 ---
 

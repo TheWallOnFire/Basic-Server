@@ -1,0 +1,24 @@
+{
+  "name": "rag-pdf-qa",
+  "version": "1.0.0",
+  "description": "Chat with your PDFs using RAG",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "ingest": "tsx src/ingest.ts"
+  },
+  "dependencies": {
+    "@langchain/openai": "^0.0.28",
+    "@langchain/pinecone": "^0.0.1",
+    "@pinecone-database/pinecone": "^2.2.0",
+    "dotenv": "^16.4.5",
+    "langchain": "^0.1.36",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
+  }
+}

@@ -44,7 +44,8 @@ The complete [roadmap.sh/devops](https://roadmap.sh/devops) path for infrastruct
 
 ### [🤖 AI Engineer](./AI-Engineer/)
 The complete [roadmap.sh/ai-engineer](https://roadmap.sh/ai-engineer) path for building AI-powered applications.
-- **[AI Roadmap](./AI-Engineer/docs/ROADMAP.md)**: Steps to master LLMs, RAG, and Agents.
+- **AI Roadmap**: Steps to master LLMs, RAG, and Agents.
+- **Hands-on Projects**: [RAG PDF-QA](./AI-Engineer/projects/rag-pdf-qa/), [Agentic Researcher](./AI-Engineer/projects/agentic-researcher/), [Vision Analyzer](./AI-Engineer/projects/vision-analyzer/).
 - **LLMs & Prompting**: Tokens, Context, Zero-shot, Few-shot.
 - **RAG & Vectors**: Semantic search, Vector DBs, Chunking.
 - **Agents & Tools**: Autonomous reasoning, MCP, Multi-agent systems.
