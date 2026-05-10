@@ -55,6 +55,7 @@ The complete [roadmap.sh/ai-engineer](https://roadmap.sh/ai-engineer) path for b
 ### [🛡️ Cyber Security](./Cyber-Security/)
 The complete [roadmap.sh/cyber-security](https://roadmap.sh/cyber-security) path for becoming a security professional.
 - **[Security Roadmap](./Cyber-Security/docs/ROADMAP.md)**: Steps to master IT, Networking, and Security.
+- **Hands-on Projects**: [Network Scanner](./Cyber-Security/projects/network-scanner/), [Vulnerability Lab](./Cyber-Security/projects/vuln-lab/), [Log Monitor](./Cyber-Security/projects/log-monitor/).
 - **Foundations**: IT Skills, OS mastery (Linux/Windows), Networking.
 - **Security Core**: CIA Triad, Cryptography, Discovery tools (Nmap/Wireshark).
 - **Attack & Defense**: MITRE ATT&CK, OWASP, Cloud security.
@@ -63,6 +64,8 @@ The complete [roadmap.sh/cyber-security](https://roadmap.sh/cyber-security) path
 ### [🧪 QA Engineer](./QA/)
 The complete [roadmap.sh/qa](https://roadmap.sh/qa) path for modern quality assurance.
 - **[QA Roadmap](./QA/docs/ROADMAP.md)**: From manual testing to automated pipelines.
+- **Strategic QA**: [QA vs QC vs AC](./QA/docs/10_deep_dive_qa_qc_ac.md).
+- **Hands-on Projects**: [Playwright E2E](./QA/projects/e2e-playwright/), [k6 API Testing](./QA/projects/api-testing-k6/).
 - **Manual Testing**: Test cases, test plans, exploratory testing.
 - **Automation**: Playwright, Cypress, Selenium, and test patterns.
 - **API & Performance**: Postman, k6, JMeter, contract testing.

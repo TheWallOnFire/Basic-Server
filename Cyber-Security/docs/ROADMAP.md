@@ -27,5 +27,13 @@ Welcome to the Cyber Security Roadmap! This guide is based on the [roadmap.sh/cy
 
 ---
 
+## 🚀 Hands-on Projects
+Practice your skills in a safe environment:
+- **[🔍 Network Scanner](../projects/network-scanner/README.md)**: Build a discovery tool with Python and Scapy.
+- **[🛡️ Vulnerability Lab](../projects/vuln-lab/README.md)**: Set up a pre-configured OWASP Juice Shop lab.
+- **[🚨 Log Monitor](../projects/log-monitor/README.md)**: Build a real-time brute-force detection script.
+
+---
+
 ## 🚀 Pro Tip
 Cyber security is a "hands-on" field. Don't just read these docs—set up a virtual lab using **VirtualBox** and try the tools yourself in a safe environment!
