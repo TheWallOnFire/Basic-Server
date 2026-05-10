@@ -19,7 +19,7 @@ Storage solutions, engine configurations, and ORM guides.
 - **NoSQL**: MongoDB, Redis, Cassandra, Elasticsearch, ClickHouse.
 - **ORM & Query Builders**: Prisma, Sequelize, Drizzle, Mongoose.
 - **Cloud & BaaS**: Supabase, Firebase, PlanetScale.
-- **[Database Comparison](./Database/docs/3_comparison.md)**.
+- **[Database Roadmap](./Database/docs/ROADMAP.md)**.
 
 ### [🧠 System Design](./System%20Design/)
 High-level principles and patterns for building scalable and reliable distributed systems.
@@ -40,6 +40,22 @@ The complete [roadmap.sh/devops](https://roadmap.sh/devops) path for infrastruct
 - **Observability**: Prometheus, OTel, Loki, Jaeger.
 - **Code Quality & Security**: Snyk, SonarQube, Trivy, Falco, k6.
 
+### [🤖 AI Engineer](./AI-Engineer/)
+The complete [roadmap.sh/ai-engineer](https://roadmap.sh/ai-engineer) path for building AI-powered applications.
+- **[AI Roadmap](./AI-Engineer/docs/ROADMAP.md)**: Steps to master LLMs, RAG, and Agents.
+- **LLMs & Prompting**: Tokens, Context, Zero-shot, Few-shot.
+- **RAG & Vectors**: Semantic search, Vector DBs, Chunking.
+- **Agents & Tools**: Autonomous reasoning, MCP, Multi-agent systems.
+- **Modern Workflow**: Cursor, Copilot, and "Vibe Coding."
+
+### [🛡️ Cyber Security](./Cyber-Security/)
+The complete [roadmap.sh/cyber-security](https://roadmap.sh/cyber-security) path for becoming a security professional.
+- **[Security Roadmap](./Cyber-Security/docs/ROADMAP.md)**: Steps to master IT, Networking, and Security.
+- **Foundations**: IT Skills, OS mastery (Linux/Windows), Networking.
+- **Security Core**: CIA Triad, Cryptography, Discovery tools (Nmap/Wireshark).
+- **Attack & Defense**: MITRE ATT&CK, OWASP, Cloud security.
+- **Career Path**: Certifications (Sec+, OSCP) and learning resources.
+
 ---
 
 ## 🛠️ How to Use This Kit
@@ -53,7 +69,7 @@ The complete [roadmap.sh/devops](https://roadmap.sh/devops) path for infrastruct
 
 ## 📜 Master Comparisons
 - **[Node.js Comparison](./Server/Node.js/docs/comparison.md)**
-- **[Database Comparison](./Database/docs/3_comparison.md)**
+- **[Database Comparison](./Database/docs/08_tools_and_comparisons.md)**
 - **[DevOps Comparison](./DevOps/docs/3_comparison.md)**
 
 ---
