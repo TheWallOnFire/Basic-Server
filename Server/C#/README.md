@@ -1,14 +1,18 @@
-# C# (.NET) Server Ecosystem
+# C# and .NET Ecosystem
 
-## Overview
-C# is a modern, object-oriented, and type-safe programming language. It is developed by Microsoft and runs on the .NET platform.
+This directory contains resources, guides, and roadmaps for mastering C# and the .NET ecosystem.
 
-## Frameworks in this Category
-- **[ASP.NET Core](./ASP.NET/)**: A cross-platform, high-performance, open-source framework for building modern, cloud-enabled, Internet-connected apps.
-- **[Blazor](./Blazor/)**: Build interactive web UIs with C# instead of JavaScript.
+## 📂 Structure
+- **[ASP.NET Core Roadmap](./docs/ROADMAP.md)**: The comprehensive guide to modern .NET development.
+- **[ASP.NET](./ASP.NET/)**: Classic and modern web development examples.
+- **[Blazor](./Blazor/)**: Full-stack web development with C#.
 
-## Key Features
-- **Cross-Platform**: Run on Windows, Linux, and macOS.
-- **Performance**: Extremely fast with the latest .NET versions.
-- **Ecosystem**: NuGet, Visual Studio, Azure integration.
-- **Strong Typing**: Prevents many runtime errors at compile time.
+## 🚀 Key Topics
+1. **[C# Foundations](./docs/01_csharp_foundations.md)**: Syntax, LINQ, and Async.
+2. **[ASP.NET Core Basics](./docs/02_aspnet_core_basics.md)**: MVC, DI, and Middleware.
+3. **[Entity Framework Core](./docs/03_entity_framework_core.md)**: Modern data access.
+4. **[Web API & REST](./docs/05_web_api_and_rest.md)**: Building high-performance APIs.
+5. **[Clean Architecture](./docs/07_clean_architecture_cqrs.md)**: Scalable design patterns.
+
+---
+*Based on industry standards from [roadmap.sh/aspnet-core](https://roadmap.sh/aspnet-core)*

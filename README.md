@@ -16,6 +16,7 @@ Backend implementations across 8+ programming languages and dozens of frameworks
 ### [🗄️ Data Engineer](./Data-Engineer/)
 Database foundations, engine configurations, ORMs, and production data engineering.
 - **[Data Engineer Roadmap](./Data-Engineer/docs/ROADMAP.md)**: From database basics to data pipelines.
+- **Rules & Foundations**: [ACID, BASE & PACELC](./Data-Engineer/docs/15_database_rules_acid_base.md).
 - **Relational**: PostgreSQL, MySQL, SQLite.
 - **NoSQL**: MongoDB, Redis, Cassandra, Elasticsearch, ClickHouse.
 - **ORM & Query Builders**: Prisma, Sequelize, Drizzle, Mongoose.
@@ -71,6 +72,13 @@ The complete [roadmap.sh/qa](https://roadmap.sh/qa) path for modern quality assu
 - **API & Performance**: Postman, k6, JMeter, contract testing.
 - **Security Testing**: OWASP ZAP, SAST/DAST, penetration testing.
 
+### [🖥️ System Administrator](./System-Administrator/)
+The essential path for managing and securing modern IT infrastructure.
+- **[SysAdmin Roadmap](./System-Administrator/docs/ROADMAP.md)**: Steps to master OS, Networking, and Security.
+- **Foundations**: [Introduction to SysAdmin](./System-Administrator/docs/01_intro_sysadmin.md), [Linux Fundamentals](./System-Administrator/docs/02_linux_fundamentals.md).
+- **Operations**: [User Management](./System-Administrator/docs/03_user_management.md), [Networking Essentials](./System-Administrator/docs/04_networking_essentials.md).
+- **Hardware & OS**: Virtualization, hardware architecture, and OS hardening.
+
 ---
 
 ## 🛠️ How to Use This Kit
@@ -81,7 +89,8 @@ The complete [roadmap.sh/qa](https://roadmap.sh/qa) path for modern quality assu
 4. **Build with AI**: Use `AI-Engineer/` to integrate LLMs, RAG, and Agents into your apps.
 5. **Secure Your App**: Use `Cyber-Security/` to learn defense and attack techniques.
 6. **Test Everything**: Use `QA/` to build automated test pipelines.
-7. **Follow the Strategy**: Read the [Master Strategy Guide](./DevOps/docs/4_master_strategy.md) to understand the professional "how" and "why."
+7. **Manage Infrastructure**: Use `System-Administrator/` to master server and network management.
+8. **Follow the Strategy**: Read the [Master Strategy Guide](./DevOps/docs/4_master_strategy.md) to understand the professional "how" and "why."
 
 ---
 
@@ -90,6 +99,7 @@ The complete [roadmap.sh/qa](https://roadmap.sh/qa) path for modern quality assu
 - **[Data Engineer Comparison](./Data-Engineer/docs/08_tools_and_comparisons.md)**
 - **[DevOps Comparison](./DevOps/docs/3_comparison.md)**
 - **[QA Tools Comparison](./QA/docs/09_qa_tools_comparison.md)**
+- **[SysAdmin Tools Comparison](./System-Administrator/docs/05_tools_and_comparisons.md)**
 
 ---
 
