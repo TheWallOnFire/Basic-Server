@@ -8,15 +8,18 @@ Welcome to the Data Engineer Roadmap! This guide is based on the [roadmap.sh/dat
 
 ### 🟢 Phase 1: Database Internals
 1. **[Design Basics](./01_design_basics.md)**: Normalization, Relationships, and Primary/Foreign Keys.
-2. **[ACID, BASE & PACELC](./15_database_rules_acid_base.md)**: The fundamental rules of data consistency and availability.
-3. **[SQL vs NoSQL](./02_sql_vs_nosql.md)**: Choosing the right engine for the right job.
-4. **[Indexing Strategies](./03_indexing_strategies.md)**: B-Trees, Hash indexes, and query optimization.
-5. **[CAP Theorem](./04_cap_theorem.md)**: Consistency, Availability, and Partition Tolerance in distributed systems.
+2. **[CRUD Operations](./16_crud_operations.md)**: The four basic pillars of data manipulation.
+3. **[Programmability (Triggers/Procedures)](./18_database_features_programmability.md)**: Automating logic inside the database.
+4. **[ACID, BASE & PACELC](./15_database_rules_acid_base.md)**: The fundamental rules of data consistency and availability.
+5. **[SQL vs NoSQL](./02_sql_vs_nosql.md)**: Choosing the right engine for the right job.
+6. **[Indexing Strategies](./03_indexing_strategies.md)**: B-Trees, Hash indexes, and query optimization.
+7. **[CAP Theorem](./04_cap_theorem.md)**: Consistency, Availability, and Partition Tolerance in distributed systems.
 
 ### 🟡 Phase 2: Scaling & Reliability
 6. **[Sharding & Replication](./05_sharding_replication.md)**: Horizontal scaling and high availability.
 7. **[Common Problems](./06_common_problems.md)**: N+1 queries, deadlocks, and slow joins.
-8. **[Design Patterns](./07_design_patterns.md)**: CQRS, Event Sourcing, and Outbox pattern.
+8. **[Design Patterns](./07_design_patterns.md)**: Standard patterns for scalability.
+9. **[Distributed Patterns (CQRS + Kafka)](./17_distributed_patterns_kafka_cqrs.md)**: Building event-driven architectures with the Outbox pattern.
 
 ### 🟠 Phase 3: Data Engineering & Pipelines
 9. **[Data Formats](./13_data_formats.md)**: JSON, Parquet, Avro, and Protobuf.

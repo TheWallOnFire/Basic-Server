@@ -10,21 +10,26 @@ An **Object-Relational Mapper** allows you to work with a database using .NET ob
 - **DbSet<T>**: Represents a collection of entities in the database.
 - **Migrations**: Allows you to evolve your database schema as your model changes.
 
-## 3. Workflows
-- **Code First**: You write the C# classes first, and EF Core generates the database.
-- **Database First**: You generate C# classes from an existing database schema.
+## 4. Configuring Models (Fluent API vs Data Annotations)
+- **Data Annotations**: Attributes on classes (`[Key]`, `[Required]`).
+- **Fluent API**: Defined in `OnModelCreating`. More powerful for complex relationships.
+  ```csharp
+  modelBuilder.Entity<Post>()
+              .HasOne(p => p.Author)
+              .WithMany(a => a.Posts)
+              .HasForeignKey(p => p.AuthorId);
+  ```
 
-## 4. Querying Data
-EF Core uses LINQ to query data.
-```csharp
-using (var context = new MyDbContext())
-{
-    var user = context.Users
-                      .Include(u => u.Posts) // Eager loading
-                      .FirstOrDefault(u => u.Id == 1);
-}
-```
+## 5. Advanced Features
+- **Global Query Filters**: Automatically filter data (e.g., Soft Delete: `WHERE IsDeleted = false`).
+- **Interceptors**: Intercept DB operations for logging or auditing.
+- **Lazy Loading**: Loading related data only when it's accessed (be careful with N+1!).
 
-## 5. Tracking vs No-Tracking
-- **Tracking**: EF Core keeps track of changes to entities so it can save them automatically.
-- **AsNoTracking()**: Used for read-only queries to improve performance and reduce memory usage.
+## 6. Tracking vs No-Tracking
+- **Tracking**: EF Core watches entities for changes.
+- **AsNoTracking()**: Fast, read-only queries.
+
+## 7. Dapper (The Lightweight Alternative)
+Dapper is a "Micro-ORM" that provides high-performance mapping for raw SQL.
+- **Why use it?**: When you need absolute control over SQL performance.
+- **Usage**: Extends `IDbConnection` with methods like `.Query<T>()`.

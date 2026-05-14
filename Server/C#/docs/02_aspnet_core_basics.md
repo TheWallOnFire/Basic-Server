@@ -20,10 +20,26 @@ ASP.NET Core is the cross-platform, high-performance framework for building mode
 
 ## 3. Dependency Injection (DI)
 ASP.NET Core has built-in support for DI.
-- **Transient**: Created every time they are requested.
-- **Scoped**: Created once per client request (HTTP request).
-- **Singleton**: Created once and shared throughout the app's lifetime.
+- **Transient**: Created every time they are requested (Good for lightweight services).
+- **Scoped**: Created once per HTTP request (Standard for DB contexts).
+- **Singleton**: Created once and shared throughout the app (Good for caching/state).
 
-## 4. Host & Kestrel
-- **Kestrel**: The cross-platform web server for ASP.NET Core.
-- **IIS/Nginx/Apache**: Usually used as a reverse proxy in front of Kestrel.
+## 4. Filters & Pipelines
+Filters allow you to run code before or after specific stages in the request processing pipeline.
+- **Authorization Filters**: Controls access.
+- **Action Filters**: Runs before/after a controller action (Good for validation/logging).
+- **Exception Filters**: Global handling of unhandled exceptions.
+
+## 5. Routing
+- **Attribute Routing**: `[Route("api/[controller]")]` directly on controllers.
+- **Conventional Routing**: Defined in `Program.cs` for MVC apps.
+- **Route Constraints**: `[HttpGet("{id:int}")]` to restrict parameter types.
+
+## 6. Authentication & Authorization
+- **ASP.NET Core Identity**: A full membership system (Login, Roles, Tokens).
+- **JWT (JSON Web Tokens)**: Standard for securing Web APIs.
+- **Policy-based Authorization**: Defining complex rules (e.g., "Must be 18 and have Admin role").
+
+## 7. Web Server: Kestrel
+- **Kestrel**: High-performance, cross-platform server.
+- **Reverse Proxy**: Usually used with Nginx or IIS for SSL termination and load balancing.
