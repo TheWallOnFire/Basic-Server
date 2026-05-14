@@ -1,4 +1,4 @@
-# 02. ASP.NET Core Basics
+# 03. ASP.NET Core Basics
 
 ASP.NET Core is the cross-platform, high-performance framework for building modern, cloud-based, Internet-connected applications.
 

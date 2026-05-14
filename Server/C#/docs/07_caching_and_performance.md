@@ -1,4 +1,4 @@
-# 10. Caching & Performance
+# 07. Caching & Performance
 
 Caching is one of the most effective ways to improve application performance and scalability.
 

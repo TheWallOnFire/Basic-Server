@@ -1,4 +1,4 @@
-# 08. Testing in .NET
+# 09. Testing in .NET
 
 Writing automated tests is essential for building reliable and maintainable .NET applications.
 

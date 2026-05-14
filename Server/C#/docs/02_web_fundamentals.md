@@ -1,4 +1,4 @@
-# 01a. Web Fundamentals in .NET
+# 02. Web Fundamentals
 
 Before diving into ASP.NET Core, it's essential to understand the underlying web protocols and data formats.
 

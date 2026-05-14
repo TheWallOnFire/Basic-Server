@@ -1,4 +1,4 @@
-# 06. Real-time SignalR Core
+# 10. Real-time SignalR
 
 SignalR is a library for ASP.NET Core that simplifies adding real-time web functionality to apps.
 

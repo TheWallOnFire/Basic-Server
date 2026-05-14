@@ -1,4 +1,4 @@
-# 09. Logging & Monitoring
+# 08. Logging & Monitoring
 
 Logging is the "eyes and ears" of your application in production.
 

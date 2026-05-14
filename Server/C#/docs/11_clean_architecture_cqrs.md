@@ -1,4 +1,4 @@
-# 07. Clean Architecture & CQRS
+# 11. Clean Architecture & CQRS
 
 As applications grow, organizing code into a scalable and maintainable structure becomes critical.
 

@@ -1,4 +1,4 @@
-# 11. Microservices Architecture
+# 12. Microservices Architecture
 
 Scaling complex applications often requires breaking them into smaller, independent services.
 
