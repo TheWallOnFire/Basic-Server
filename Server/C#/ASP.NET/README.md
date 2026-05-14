@@ -1,31 +1,19 @@
-# ASP.NET
+# ASP.NET Core Framework
 
-## Description
-ASP.NET Core is a cross-platform, high-performance, open-source framework for building modern, cloud-enabled, Internet-connected apps. It is built and maintained by Microsoft and the open-source community.
+ASP.NET Core is a cross-platform, high-performance, open-source framework for building modern, cloud-enabled, Internet-connected apps.
 
-## How it works
-ASP.NET Core uses a high-performance web server called Kestrel. When a request hits the server, it passes through a pipeline of middleware components. Each piece of middleware can handle the request or pass it to the next component. It relies heavily on Dependency Injection and is highly modular, allowing developers to include only the necessary packages.
+## 📂 Structure
+- **[Framework Docs](./docs/)**: Detailed guides on MVC, Web API, EF Core, and more.
+- **[Full Roadmap](../docs/ROADMAP.md)**: The complete journey from C# to Microservices.
 
-## How to code it
-Here is a basic example of an ASP.NET Core minimal API (C# 10+):
+## 🚀 Key Framework Topics
+1. **[Web Basics](./docs/01_web_fundamentals.md)**: HTTP, REST, and JSON.
+2. **[ASP.NET Core Basics](./docs/02_aspnet_core_basics.md)**: MVC and Minimal APIs.
+3. **[Middleware & DI](./docs/03_middleware_and_di.md)**: The engine of the framework.
+4. **[Web API & REST](./docs/04_web_api_and_rest.md)**: Building robust endpoints.
+5. **[Entity Framework Core](./docs/05_entity_framework_core.md)**: Modern data access.
+6. **[Scaling & Perf](./docs/06_caching_and_performance.md)**: Redis and Optimization.
+7. **[Real-time SignalR](./docs/08_realtime_signalr.md)**: WebSockets and Hubs.
 
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
-
-app.MapGet("/", () => "Hello World from ASP.NET Core!");
-
-app.Run();
-```
-
-## Features it supports
-- Cross-platform support (Windows, macOS, Linux)
-- Unified story for building web UI and web APIs
-- Dependency Injection built-in
-- Blazor: allows building interactive client-side web UI with C# instead of JavaScript
-- Extremely fast performance (often topping TechEmpower benchmarks)
-
-## Real projects about it
-- **Stack Overflow**: Runs heavily on ASP.NET technologies.
-- **Tencent**: Uses ASP.NET Core for some high-performance services.
-- **Microsoft**: Naturally, uses it across their cloud and web offerings (Azure, Xbox Live).
+---
+*Looking for C# Language features? Visit the **[Core Docs](../docs/)***

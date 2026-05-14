@@ -3,18 +3,17 @@
 This directory contains resources, guides, and roadmaps for mastering C# and the .NET ecosystem.
 
 ## 📂 Structure
-- **[ASP.NET Core Roadmap](./docs/ROADMAP.md)**: The comprehensive guide to modern .NET development.
-- **[ASP.NET](./ASP.NET/)**: Classic and modern web development examples.
+- **[Full Roadmap](./docs/ROADMAP.md)**: The comprehensive guide to C# and ASP.NET Core.
+- **[ASP.NET Core](./ASP.NET/)**: Modern web development with C#.
 - **[Blazor](./Blazor/)**: Full-stack web development with C#.
 
-## 🚀 Key Topics
+## 🚀 Key Topics (C# Language & Patterns)
 0. **[The .NET Ecosystem](./docs/00_dotnet_ecosystem.md)**: Evolution and CLR internals.
 1. **[C# Foundations](./docs/01_csharp_foundations.md)**: Syntax, LINQ, and Async.
-2. **[Web Fundamentals](./docs/02_web_fundamentals.md)**: HTTP, REST, and JSON.
-3. **[ASP.NET Core Basics](./docs/03_aspnet_core_basics.md)**: MVC, DI, and Middleware.
-4. **[Entity Framework Core](./docs/06_entity_framework_core.md)**: Modern data access.
-5. **[Performance & Scaling](./docs/07_caching_and_performance.md)**: Caching and Optimization.
-6. **[Microservices](./docs/12_microservices_architecture.md)**: Containers and Distributed Systems.
+2. **[C# Deep Dive](./docs/02_csharp_deep_dive.md)**: Attributes, Delegates, and Generics.
+3. **[Testing Foundations](./docs/03_testing_foundations.md)**: Unit testing and isolation.
+4. **[Clean Architecture](./docs/04_design_patterns_clean_arch.md)**: Scaling complex systems.
+5. **[Common Design Patterns](./docs/05_common_design_patterns.md)**: Singleton, Factory, and SOLID.
 
 ---
-*Based on industry standards from [roadmap.sh/aspnet-core](https://roadmap.sh/aspnet-core)*
+*Looking for ASP.NET Core? Visit the **[ASP.NET Core Directory](./ASP.NET/)***
