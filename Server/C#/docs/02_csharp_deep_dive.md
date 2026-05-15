@@ -14,10 +14,9 @@ Attributes are like "labels" you put on classes, methods, or properties. They do
 
 ### Reflection
 Reflection is the ability to inspect code at runtime. You can find out what methods a class has, what attributes are on it, and even execute methods dynamically.
-```csharp
-var type = typeof(MyClass);
-var attributes = type.GetCustomAttributes(true); // Finds all sticky notes (attributes)
-```
+
+> [!TIP]
+> For a complete guide on defining custom attributes and using reflection, see the **[Attributes & Reflection Deep Dive](./02_attributes_and_reflection.md)**.
 
 ---
 
