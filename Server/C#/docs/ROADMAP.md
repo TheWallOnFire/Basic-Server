@@ -9,7 +9,9 @@ This roadmap is split into two parts: **C# Language Mastery** and **ASP.NET Core
 ### 🟢 Foundations
 0. **[The .NET Ecosystem](./00_dotnet_ecosystem.md)**: Evolution and CLR internals.
 1. **[C# Fundamentals](./01_csharp_foundations.md)**: Syntax, Types, and OOP.
-2. **[C# Deep Dive](./02_csharp_deep_dive.md)**: Attributes, Delegates, and Generics.
+1b. **[Error Handling & Parsing](./01_error_handling.md)**: Exceptions and TryParse.
+1c. **[Collections & Data Structures](./01c_collections_data_structures.md)**: List, Dictionary, and HashSet.
+2. **[C# Deep Dive](./02_csharp_deep_dive.md)**: [Attributes & Reflection](./02_attributes_and_reflection.md), Delegates, and Generics.
 
 ### 🟡 Quality & Architecture
 3. **[Testing Foundations](./03_testing_foundations.md)**: Unit testing and Mocking.

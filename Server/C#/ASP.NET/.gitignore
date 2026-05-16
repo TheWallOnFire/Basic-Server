@@ -1,0 +1,17 @@
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+App_Data/
+
+# Note: bin/ and obj/ are intentionally not ignored here so they are tracked.
+# Explanation: In some projects you may want to track compiled outputs (bin/ and obj/)
+# to ensure build artifacts are available for CI, legacy workflows, or when
+# consumers expect prebuilt assemblies. Normally these directories are ignored
+# to avoid committing binaries, but this repository intentionally keeps them
+# under source control. If you decide to stop tracking them, add the following
+# lines instead:
+#
+bin/
+obj/
