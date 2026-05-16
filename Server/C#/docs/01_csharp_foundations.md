@@ -18,7 +18,7 @@ Reference types store a "reference" (pointer) to the actual data.
 - **`string`**: An immutable sequence of characters.
 - **`class`**: The fundamental building block of OOP.
 - **`interface`**: A contract that classes implement.
-- **`array`**: A collection of items of the same type.
+- **`array`**: A collection of items of the same type. (See **[Collections & Data Structures](./01c_collections_data_structures.md)** for advanced types like `List` and `Dictionary`).
 
 ### Nullable Types
 By default, value types cannot be `null`. Reference types can be `null`.
@@ -86,7 +86,7 @@ The GC automatically identifies objects on the heap that are no longer being use
 ## 5. Control Flow
 - **Conditional**: `if`, `else if`, `else`, and the modern `switch` expression.
 - **Loops**: `for`, `foreach` (the standard for collections), `while`, and `do-while`.
-- **Exception Handling**: `try`, `catch`, `finally`, and `throw`.
+- **Exception Handling**: `try`, `catch`, `finally`, and `throw`. (See **[Error Handling & Parsing](./01_error_handling.md)** for a deep dive).
 
 ---
 

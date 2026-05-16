@@ -42,6 +42,8 @@ The best way to learn is by building. Explore these starter subprojects:
 - **[📚 RAG PDF-QA](../projects/rag-pdf-qa/README.md)**: Build a chatbot that answers questions from your PDFs.
 - **[🕵️ Agentic Researcher](../projects/agentic-researcher/README.md)**: Create an autonomous agent that does web research for you.
 - **[👁️ Vision Analyzer](../projects/vision-analyzer/README.md)**: Build an app that understands and describes images.
+- **[🏠 Local Model Serving](../Running-Models-Locally/README.md)**: Learn how to run and serve LLMs on your own hardware.
+- **[🆓 Free LLM APIs](../freellm/README.md)**: A collection of services that offer free LLM access for prototyping.
 
 ---
 

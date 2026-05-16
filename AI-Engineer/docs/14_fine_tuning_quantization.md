@@ -28,3 +28,8 @@ Making models smaller so they run faster and fit in less VRAM.
 - **Unsloth**: The fastest library for local fine-tuning.
 - **Ollama**: For running quantized GGUF models easily.
 - **AutoGPTQ / AutoAWQ**: For quantizing your own models.
+
+---
+
+> [!TIP]
+> Ready to run these models on your own machine? Check out the **[Running Models Locally Guide](../Running-Models-Locally/README.md)**.
