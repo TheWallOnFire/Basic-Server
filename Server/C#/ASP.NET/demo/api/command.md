@@ -41,8 +41,33 @@ If you see "dotnet-ef does not exist" or "specified command or file was not foun
 		- OS and architecture compatibility
 		- Installed workloads and tools
 
+### Fixing "Unable to resolve service for type 'Microsoft.EntityFrameworkCore.DbContextOptions'"
+If you get this error when creating migrations or running `dotnet ef`:
+
+- Ensure your `ApplicationDBContext` constructor accepts the typed options:
+	- `public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) { }
+- Do not use the non-generic `DbContextOptions` in the constructor.
+- If design-time services cannot create the context, add a factory:
+	- `public class ApplicationDBContextFactory : IDesignTimeDbContextFactory<ApplicationDBContext>`
+	- Implement `CreateDbContext(string[] args)` and return a new context with `DbContextOptionsBuilder<ApplicationDBContext>`.
+- Confirm your `Program.cs` or `Startup.cs` registers the context with `AddDbContext<ApplicationDBContext>()`.
+
 After installing the tool and adding the design package, run the migration command again:
 `dotnet ef migrations add init`
+
+### Fixing "migration already applied" errors
+If you see an error like:
+- `The migration '20260517034110_init' has already been applied to the database. Revert it and try again.`
+
+- If the migration was already applied to the current database, revert the database to the previous migration:
+    - `dotnet ef database update <previous_migration_name>`
+- To revert all applied migrations and return the database to its initial state:
+    - `dotnet ef database update 0`
+- If the migration was added locally but not applied, remove it from the project:
+    - `dotnet ef migrations remove`
+- If the migration has already been applied to other databases, create a new migration to revert the schema changes or apply a new migration containing the desired fixes.
+- Confirm the migration history table `__EFMigrationsHistory` matches the project migrations before re-running commands.
+
 
 ## Other
 - `dotnet --version` - Show dotnet version

@@ -1,103 +1,114 @@
-# 02. Attributes & Reflection
+# 02a. Advanced Attributes & Reflection
 
 Attributes and Reflection are the tools that allow C# to be "self-aware." They enable meta-programming, where code can inspect and modify its own behavior or the behavior of other code at runtime.
 
 ---
 
-## 1. Attributes: Adding Metadata
-Attributes are declarative tags that provide extra information (metadata) about code elements like classes, methods, properties, or parameters. They are placed in square brackets `[]`.
+## 1. Advanced Attribute Features
 
-### Applying Attributes
-Attributes are interpreted by the compiler or at runtime by tools and frameworks.
+Attributes are declarative tags that provide extra metadata. While basic usage is common, advanced applications require deeper understanding.
 
+### Assembly-Level Attributes
+You can apply attributes to an entire assembly rather than a specific class or method. These are usually placed in `AssemblyInfo.cs` or the `.csproj` file.
 ```csharp
-[Serializable] // Metadata for the .NET runtime
-public class UserProfile
-{
-    [Obsolete("Use NewId instead")] // Compiler warning for developers
-    public int OldId { get; set; }
-
-    [Required] // Metadata for validation frameworks (EF Core, ASP.NET)
-    public string Username { get; set; }
-}
+[assembly: InternalsVisibleTo("MyProject.Tests")] // Allows test project to see 'internal' members
+[assembly: AssemblyVersion("1.0.0.0")]
 ```
 
-### Common Built-in Attributes
-- **`[Obsolete]`**: Marks code as deprecated.
-- **`[Serializable]`**: Indicates a class can be serialized.
-- **`[Conditional]`**: Executes a method only if a specific preprocessor symbol is defined (e.g., `DEBUG`).
-- **`[ApiController]`**: (ASP.NET) Enables API-specific behaviors.
+### Caller Information Attributes
+These are special attributes provided by the compiler to help with logging and diagnostics without using reflection. They are applied to optional parameters.
+```csharp
+public void LogMessage(string message,
+    [CallerMemberName] string memberName = "",
+    [CallerFilePath] string sourceFilePath = "",
+    [CallerLineNumber] int sourceLineNumber = 0)
+{
+    Console.WriteLine($"{message} (Logged from {memberName} in {sourceFilePath} at line {sourceLineNumber})");
+}
+// Usage: LogMessage("Database connected!"); // The compiler fills in the caller details automatically.
+```
 
 ---
 
-## 2. Custom Attributes
-You can create your own attributes by inheriting from the `System.Attribute` class.
+## 2. Deep Dive: Custom Attributes
 
-### Defining an Attribute
-Use `[AttributeUsage]` to restrict where your attribute can be applied.
+When defining custom attributes by inheriting from `System.Attribute`, you use `[AttributeUsage]` to control their behavior.
+
+### `AttributeUsage` Parameters
+- **`ValidOn`**: Restricts where the attribute can be placed (e.g., `AttributeTargets.Class | AttributeTargets.Method`).
+- **`AllowMultiple`**: Determines if the attribute can be applied more than once to the same element.
+- **`Inherited`**: Determines if the attribute is inherited by derived classes.
 
 ```csharp
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
-public class DeveloperNoteAttribute : Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
+public class FeatureToggleAttribute : Attribute
 {
-    public string Note { get; }
-    public string Author { get; set; } // Optional named parameter
+    public string FeatureName { get; }
+    public FeatureToggleAttribute(string featureName) => FeatureName = featureName;
+}
+```
 
-    public DeveloperNoteAttribute(string note) // Positional parameter
+### Implementing Custom Validation
+A common advanced use case is creating custom validation attributes by inheriting from `ValidationAttribute` (used in ASP.NET and EF Core).
+```csharp
+public class MustBeEvenAttribute : ValidationAttribute
+{
+    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
-        Note = note;
+        if (value is int intValue && intValue % 2 != 0)
+        {
+            return new ValidationResult("The value must be an even number.");
+        }
+        return ValidationResult.Success;
     }
 }
 ```
 
-### Using the Custom Attribute
-```csharp
-[DeveloperNote("Optimization needed here", Author = "Alice")]
-public class OrderService { }
-```
-
 ---
 
-## 3. Reflection: Inspecting Code
-Reflection is the process of inspecting the metadata of assemblies, modules, and types at runtime.
+## 3. Advanced Reflection Techniques
 
-### The `Type` Class
-The core of reflection is the `System.Type` class. You can get a type using `typeof()` or `GetType()`.
+Reflection (`System.Type`) allows you to inspect metadata at runtime, but it can also be used to interact with code dynamically.
 
+### Dynamic Invocation and Instantiation
+You can create instances of classes and invoke methods without knowing them at compile time.
 ```csharp
-Type t = typeof(OrderService);
-Console.WriteLine($"Name: {t.Name}");
-Console.WriteLine($"Namespace: {t.Namespace}");
+Type type = typeof(MyService);
 
-// List all methods
-foreach (var method in t.GetMethods())
-{
-    Console.WriteLine($"Method: {method.Name}");
-}
+// Instantiate dynamically
+object instance = Activator.CreateInstance(type);
+
+// Find and invoke a private method
+MethodInfo method = type.GetMethod("SecretMethod", BindingFlags.NonPublic | BindingFlags.Instance);
+method.Invoke(instance, null);
 ```
+*Note: `BindingFlags` are essential for filtering exactly what members you want to find via reflection.*
 
-### Reading Attributes at Runtime
-This is how frameworks like ASP.NET "know" what to do with your code.
-
+### Reading Custom Attributes
+Frameworks read attributes to determine behavior.
 ```csharp
 var type = typeof(OrderService);
-var attr = (DeveloperNoteAttribute)Attribute.GetCustomAttribute(type, typeof(DeveloperNoteAttribute));
+// Retrieve all FeatureToggle attributes applied to this class
+var features = type.GetCustomAttributes<FeatureToggleAttribute>();
 
-if (attr != null)
+foreach (var feature in features)
 {
-    Console.WriteLine($"Note: {attr.Note} by {attr.Author}");
+    Console.WriteLine($"Feature enabled: {feature.FeatureName}");
 }
 ```
 
 ---
 
-## 4. Real-World Applications
-1.  **Validation**: ASP.NET Core uses attributes like `[Required]` to automatically validate incoming requests.
-2.  **Dependency Injection**: Frameworks use reflection to find constructors and inject services.
-3.  **JSON Serialization**: Libraries like `System.Text.Json` use attributes like `[JsonPropertyName("id")]` to map C# properties to JSON keys.
-4.  **Unit Testing**: Test runners (xUnit/NUnit) use reflection to find and execute methods marked with `[Fact]` or `[Test]`.
+## 4. The Performance Cost & Source Generators
+
+**Reflection is computationally expensive.** It relies on late binding and string lookups, which bypass compiler optimizations.
+
+### Source Generators (The Modern Alternative)
+Introduced in C# 9, **Source Generators** allow you to write code that inspects your application's code *during compilation* and generates new C# source files.
+- **Why?** It completely removes the runtime cost of Reflection.
+- **How it works**: The generator runs in the background as you type. If it sees a specific `[Attribute]`, it instantly generates the boilerplate code needed, turning reflection-based logic into highly optimized compile-time code.
 
 ---
 
 ## 🚀 Pro Tip
-While powerful, **Reflection is computationally expensive**. Use it sparingly in high-performance loops. If you need to perform the same reflection task repeatedly, consider caching the results.
+Always prefer **Source Generators** or **Caller Information Attributes** over Reflection if performance is critical. Use Reflection primarily for debugging, diagnostic tools, or building highly generic frameworks where compile-time types are impossible to know.
