@@ -7,7 +7,7 @@
 ## 🏗️ Why use Llama.cpp directly?
 - **Maximum Performance**: Minimal overhead compared to GUI tools.
 - **Customization**: Full control over every inference parameter.
-- **Portability**: Runs on everything from a Raspberry Pi to a high-end server.
+- **Portability**: Runs o n everything from a Raspberry Pi to a high-end server.
 - **GGUF Format**: The creator of the highly efficient GGUF file format.
 
 ---
