@@ -30,6 +30,9 @@ This roadmap is split into two parts: **C# Language Mastery** and **ASP.NET Core
 
 ### 🟡 Building APIs & Data
 9. **[Web API & REST](../ASP.NET/docs/04_web_api_and_rest.md)**: Controllers and Swagger.
+9b. **[Data Transfer Objects (DTOs)](../ASP.NET/docs/04b_data_transfer_objects.md)**: Security, AutoMapper, and Records.
+9c. **[HTTP Methods & HttpClient](../ASP.NET/docs/04c_http_methods_and_client.md)**: Verbs, IHttpClientFactory, and Typed Clients.
+9d. **[The MVC Namespace](../ASP.NET/docs/04d_mvc_namespace_deep_dive.md)**: ControllerBase, IActionResult, and Filters.
 10. **[Entity Framework Core](../ASP.NET/docs/05_entity_framework_core.md)**: Modern ORM.
 
 ### 🟠 Advanced Operations
