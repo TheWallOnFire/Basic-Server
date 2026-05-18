@@ -52,6 +52,7 @@ The complete [roadmap.sh/ai-engineer](https://roadmap.sh/ai-engineer) path for b
 - **Agents & Tools**: Autonomous reasoning, MCP, Multi-agent systems.
 - **MLOps**: Experiment tracking, model serving, drift detection.
 - **Data Science**: Math foundations, classical ML, deep learning.
+- **[Prompt Engineering](./AI-Engineer/Prompt-Engineer/)**: Crafting effective prompts, techniques, patterns, and security.
 
 ### [🛡️ Cyber Security](./Cyber-Security/)
 The complete [roadmap.sh/cyber-security](https://roadmap.sh/cyber-security) path for becoming a security professional.

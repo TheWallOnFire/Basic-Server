@@ -44,6 +44,7 @@ The best way to learn is by building. Explore these starter subprojects:
 - **[👁️ Vision Analyzer](../projects/vision-analyzer/README.md)**: Build an app that understands and describes images.
 - **[🏠 Local Model Serving](../Running-Models-Locally/README.md)**: Learn how to run and serve LLMs on your own hardware.
 - **[🆓 Free LLM APIs](../freellm/README.md)**: A collection of services that offer free LLM access for prototyping.
+- **[✍️ Prompt Engineering](../Prompt-Engineer/README.md)**: Master the art of designing effective prompts for LLMs.
 
 ---
 
